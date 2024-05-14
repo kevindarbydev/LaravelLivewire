@@ -19,7 +19,6 @@ export default function AlbumDetails({
 }) {
     const subgenres = album.subgenres;
     const price = album.value;
-  
 
     const { data, setData, patch, errors } = useForm({
         rating: "",
@@ -58,7 +57,6 @@ export default function AlbumDetails({
                                 <h3 className="text-xl font-medium text-gray-500">
                                     {album.artist}
                                 </h3>
-
                                 {album.year_of_release && (
                                     <h4 className="text-xl">
                                         {album.year_of_release}
@@ -69,18 +67,22 @@ export default function AlbumDetails({
                                         {album.genre}
                                     </p>
                                 )}
-                                {subgenres && subgenres.length > 0 && (
-                                    <p className="text-xl mt-1 text-gray-500">
-                                        {subgenres.map((subgenre, index) => (
-                                            <span key={index}>
-                                                {subgenre}
-                                                {index < subgenres.length - 1
-                                                    ? ", "
-                                                    : ""}
-                                            </span>
-                                        ))}
-                                    </p>
-                                )}
+                                {Array.isArray(subgenres) &&
+                                    subgenres.length > 0 && (
+                                        <p className="text-xl mt-1 text-gray-500">
+                                            {subgenres.map(
+                                                (subgenre, index) => (
+                                                    <span key={index}>
+                                                        {subgenre}
+                                                        {index <
+                                                        subgenres.length - 1
+                                                            ? ", "
+                                                            : ""}
+                                                    </span>
+                                                )
+                                            )}
+                                        </p>
+                                    )}
                             </div>
                         )}
                         <div className="flex-1 flex justify-end mr-64">
