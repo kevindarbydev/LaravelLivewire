@@ -85,16 +85,16 @@ export default function AlbumDetails({
                         )}
                         <div className="flex-1 flex justify-end mr-64">
                             <div className="hidden md:block">
-                                {album.value !== 0 ? (
+                                {album && album.value !== 0 ? (
                                     <p className="text-lg font-medium">
-                                        Value: ${album.value}
+                                        Value: ${price}
                                     </p>
                                 ) : (
                                     <p className="text-lg font-medium">
                                         No price data found
                                     </p>
                                 )}
-                                {forSaleCount > 0 && (
+                                {forSaleCount && forSaleCount > 0 && (
                                     <div className="block text-lg">
                                         {forSaleCount} available on the
                                         marketplace
@@ -129,7 +129,7 @@ export default function AlbumDetails({
                                 </tr>
                             </thead>
                             <tbody>
-                                {tracks &&
+                                {Array.isArray(tracks) &&
                                     tracks.length > 0 &&
                                     tracks.map((track, index) => (
                                         <tr key={track.id}>
