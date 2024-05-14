@@ -129,17 +129,18 @@ export default function AlbumDetails({
                                 </tr>
                             </thead>
                             <tbody>
-                                
-                                {tracks.map((track, index) => (
-                                    <tr key={track.id}>
-                                        <td className="text-lg border-b py-2">
-                                            {index + 1}. {track.title}
-                                        </td>
-                                        <td className="text-lg text-right border-b py-2">
-                                            {track.duration}
-                                        </td>
-                                    </tr>
-                                ))}
+                                {tracks &&
+                                    tracks.length > 0 &&
+                                    tracks.map((track, index) => (
+                                        <tr key={track.id}>
+                                            <td className="text-lg border-b py-2">
+                                                {index + 1}. {track.title}
+                                            </td>
+                                            <td className="text-lg text-right border-b py-2">
+                                                {track.duration}
+                                            </td>
+                                        </tr>
+                                    ))}
                             </tbody>
                         </table>
                     </div>
