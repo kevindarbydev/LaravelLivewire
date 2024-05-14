@@ -25,10 +25,7 @@ class ExploreController extends Controller
 
         function randomLetter()
         {
-            $int = rand(0, 25);
-            $letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            $letter = $letters[$int];
-            return $letter;
+          return "B"; // trying to fix page crash
         }
 
         $letter = randomLetter();
@@ -58,56 +55,56 @@ class ExploreController extends Controller
 
         //? -----  TOP PICKS: BY SUBGENRE -----
         // dynamically cycles content by subgenre, different every day
-        function process($subgenreList)
-        {
-            for ($i = 0; $i <= sizeof($subgenreList); $i++) {
-                $subgenre = $subgenreList[$i];
-                return $subgenre;
-            }
-        }
-        $weekday = Carbon::now()->dayOfWeek;
+        // function process($subgenreList)
+        // {
+        //     for ($i = 0; $i <= sizeof($subgenreList); $i++) {
+        //         $subgenre = $subgenreList[$i];
+        //         return $subgenre;
+        //     }
+        // }
+        // $weekday = Carbon::now()->dayOfWeek;
 
 
-        // days are 0-6 where sunday is 0, monday is 1, etc
-        switch ($weekday) {
-            case 0:
-                $subgenreList = ["Blues", "Rhythm & Blues", "Piano Blues"];
-                $selectedSubgenre = "Blues";
-                $subgenre = process($subgenreList);
-                break;
-            case 1:
-                $subgenreList = ["Punk", "Melodic Hardcore", "Hardcore"];
-                $selectedSubgenre = "Punk";
-                $subgenre = process($subgenreList);
-                break;
-            case 2:
-                $subgenreList = ["Hardcore Hip-Hop", "Thug Rap", "Pop Rap", "Boom Bap", "Gangsta"];
-                $selectedSubgenre = "Hip Hop";
-                $subgenre = process($subgenreList);
-                break;
-            case 3:
-                $subgenreList = ["Classic Rock", "Guitar Rock"];
-                $subgenre = process($subgenreList);
-                $selectedSubgenre = "Rock";
-                break;
-            case 4:
-                $subgenreList = ["Punk", "Melodic Hardcore", "Hardcore"];
-                $selectedSubgenre = "Punk";
-                $subgenre = process($subgenreList);
-                break;
-            case 5:
-                $subgenreList = ["Hardcore Hip-Hop", "Thug Rap", "Pop Rap", "Boom Bap", "Gangsta"];
-                $selectedSubgenre = "Hip Hop";
-                break;
-            case 6:
-                $subgenreList = ["Blues", "Rhythm & Blues", "Piano Blues"];
-                $selectedSubgenre = "Blues";
-                $subgenre = process($subgenreList);
-                break;
-            default:
-                error_log("Error reading weekday switch in ExploreController.php");
-                break;
-        }
+        // // days are 0-6 where sunday is 0, monday is 1, etc
+        // switch ($weekday) {
+        //     case 0:
+        //         $subgenreList = ["Blues", "Rhythm & Blues", "Piano Blues"];
+        //         $selectedSubgenre = "Blues";
+        //         $subgenre = process($subgenreList);
+        //         break;
+        //     case 1:
+        //         $subgenreList = ["Punk", "Melodic Hardcore", "Hardcore"];
+        //         $selectedSubgenre = "Punk";
+        //         $subgenre = process($subgenreList);
+        //         break;
+        //     case 2:
+        //         $subgenreList = ["Hardcore Hip-Hop", "Thug Rap", "Pop Rap", "Boom Bap", "Gangsta"];
+        //         $selectedSubgenre = "Hip Hop";
+        //         $subgenre = process($subgenreList);
+        //         break;
+        //     case 3:
+        //         $subgenreList = ["Classic Rock", "Guitar Rock"];
+        //         $subgenre = process($subgenreList);
+        //         $selectedSubgenre = "Rock";
+        //         break;
+        //     case 4:
+        //         $subgenreList = ["Punk", "Melodic Hardcore", "Hardcore"];
+        //         $selectedSubgenre = "Punk";
+        //         $subgenre = process($subgenreList);
+        //         break;
+        //     case 5:
+        //         $subgenreList = ["Hardcore Hip-Hop", "Thug Rap", "Pop Rap", "Boom Bap", "Gangsta"];
+        //         $selectedSubgenre = "Hip Hop";
+        //         break;
+        //     case 6:
+        //         $subgenreList = ["Blues", "Rhythm & Blues", "Piano Blues"];
+        //         $selectedSubgenre = "Blues";
+        //         $subgenre = process($subgenreList);
+        //         break;
+        //     default:
+        //         error_log("Error reading weekday switch in ExploreController.php");
+        //         break;
+        // }
 
 
         // $topPicks = Album::where(function ($query) use ($subgenre) {
@@ -137,7 +134,7 @@ class ExploreController extends Controller
             $albumsWithRatings['name_and_rating'][$i] = [$album->id, $album->averageRatingAllTypes()];
             $i++;
         }
-
+        $selectedSubgenre = "Rock";
         return Inertia::render(
             'Explore/Index',
             [
