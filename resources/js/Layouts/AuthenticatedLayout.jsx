@@ -67,13 +67,7 @@ export default function Authenticated({ auth, header, children, cartCount }) {
 
                                 <NavLink
                                     href={route("explore.index")}
-                                    active={
-                                        route().current("explore.index") ||
-                                        route().current(
-                                            "explore.viewAllAlbums"
-                                        ) ||
-                                        route().current("explore.advSearch")
-                                    }
+                                    disabled={true}
                                 >
                                     <span className=" dark:text-white dark:hover:bg-gray-700">
                                         Explore
